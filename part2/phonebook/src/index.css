@@ -1,0 +1,10 @@
+.noti {
+    height: 50px;
+    width: 300px;
+    border: double 5px teal;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px 0 5px;
+    margin: 20px 0;
+    background-color: #eee;
+}
