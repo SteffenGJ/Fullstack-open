@@ -45,19 +45,17 @@ blogRouter.post('/', userExtractor, async (req, res, next) => {
   }
 })
 
-blogRouter.put("/:id", async (req, res, next) => {
+blogRouter.put("/:id", userExtractor, async (req, res, next) => {
   try {
-    if (req.query) {
-      const {title, url} = req.query;
-      req.body.title = title;
-      req.body.url = url;
-    }
 
+    const user = req.user;
+    
     const blog = {
       title: req.body.title,
       author: req.body.author,
       url: req.body.url,
-      likes: req.body.likes
+      likes: req.body.likes,
+      user: user._id
     }
     const found = await Blog.findByIdAndUpdate(req.params.id, blog, {new: true});
     res.status(201).send(found);
