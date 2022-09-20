@@ -55,7 +55,8 @@ blogRouter.put("/:id", userExtractor, async (req, res, next) => {
       author: req.body.author,
       url: req.body.url,
       likes: req.body.likes,
-      user: user._id
+      user: user._id,
+      comments: req.body.comments
     }
     const found = await Blog.findByIdAndUpdate(req.params.id, blog, {new: true});
     res.status(201).send(found);
